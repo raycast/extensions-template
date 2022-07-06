@@ -1,0 +1,21 @@
+name: Build & Publish Extensions
+
+on:
+  pull_request:
+    paths:
+      - "extensions/**"
+    branches: [main, master]
+  push:
+    paths:
+      - "extensions/**"
+    branches: [main, master]
+
+jobs:
+  build_publish_extensions:
+    name: Build & Publish Extensions
+    runs-on: ubuntu-latest
+    steps:
+      - name: ray
+        uses: raycast/github-actions/ray@master
+        with:
+          access_token: "${{ secrets.RAYCAST_ORGANIZATION_TOKEN }}"
